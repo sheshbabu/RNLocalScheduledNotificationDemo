@@ -28,6 +28,7 @@ export default class RNLocalScheduledNotificationDemo extends Component {
           Shake or press menu button for dev menu
         </Text>
         <Text onPress={showNotification}>Show notification</Text>
+        <Text onPress={showDelayedNotification}>Show notification after 5 seconds</Text>
       </View>
     );
   }
@@ -37,6 +38,13 @@ function showNotification () {
   PushNotification.localNotification({
     message: 'Hello World!'
   })
+}
+
+function showDelayedNotification () {
+  PushNotification.localNotificationSchedule({
+    message: 'Hello World!',
+    date: new Date(Date.now() + (5 * 1000))
+  });
 }
 
 const styles = StyleSheet.create({
