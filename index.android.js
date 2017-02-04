@@ -11,6 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
+import PushNotification from 'react-native-push-notification';
 
 export default class RNLocalScheduledNotificationDemo extends Component {
   render() {
@@ -26,9 +27,16 @@ export default class RNLocalScheduledNotificationDemo extends Component {
           Double tap R on your keyboard to reload,{'\n'}
           Shake or press menu button for dev menu
         </Text>
+        <Text onPress={showNotification}>Show notification</Text>
       </View>
     );
   }
+}
+
+function showNotification () {
+  PushNotification.localNotification({
+    message: 'Hello World!'
+  })
 }
 
 const styles = StyleSheet.create({
